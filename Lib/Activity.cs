@@ -148,11 +148,23 @@ namespace XAPI
 			}
 		}
 
+		/// <summary>
+		/// Extensions to the activity.
+		/// </summary>
+		/// <value>Key/value pairs of extension ids and string values.</value>
+		[JsonProperty("extensions", NullValueHandling = NullValueHandling.Ignore)]
+		public Dictionary <string, string> Extensions
+		{
+			get { return this.extensions; }
+			set { this.extensions = value; }
+		}
+
 		// Private Fields
 		private Dictionary<string, string> namePairs;
 		private Dictionary<string, string> descriptionPairs;
 		private string activityType;
 		private string moreInfo;
+		private Dictionary<string, string> extensions;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="XAPI.ActivityMetaData"/> class.
