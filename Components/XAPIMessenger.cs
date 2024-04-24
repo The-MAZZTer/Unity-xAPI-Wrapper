@@ -119,8 +119,8 @@ namespace XAPI
         /// <param name="callback"></param>
         public static void SendStatement(Statement statement, Action<StatementStoredResponse> callback = null)
         {
-            XAPIMessenger.instance.StartCoroutine(XAPIMessenger.SendStatementRoutine(statement, callback));
-        }
+  				XAPIMessenger.instance.StartCoroutine(XAPIMessenger.SendStatementRoutine(statement, callback));
+				}
         
         /// <summary>
         /// Sends an xAPI statement.  This accepts a full statement as an argument.
@@ -167,8 +167,8 @@ namespace XAPI
         /// <returns></returns>
         public static IEnumerator SendMultiStatementRoutine(Statement[] statements, Action<MultiStatementStoredResponse> callback = null)
         {
-            // Serialize this thing then convert into a utf-8 byte array
-            var payload = JsonConvert.SerializeObject(statements);
+			// Serialize this thing then convert into a utf-8 byte array
+			var payload = JsonConvert.SerializeObject(statements);
             var request = XAPIMessenger.BuildPostRequest(XAPIMessenger.Config.StatementEndpoint, payload);
 
             // Yield during the request

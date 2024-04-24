@@ -177,8 +177,8 @@ namespace XAPI
 			this.moreInfo = moreInfo;
 
 			// We may not need these
-			this.namePairs = new Dictionary<string, string>();
-			this.descriptionPairs = new Dictionary<string, string>();
+			//this.namePairs = new Dictionary<string, string>();
+			//this.descriptionPairs = new Dictionary<string, string>();
 		}
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace XAPI
         /// <param name="localKey"></param>
         public bool HasNameKey(string localKey)
         {
-            return this.namePairs.ContainsKey(localKey);
+            return this.namePairs?.ContainsKey(localKey) ?? false;
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace XAPI
         /// <param name="localKey"></param>
         public bool HasDescriptionKey(string localKey)
         {
-            return this.namePairs.ContainsKey(localKey);
+            return this.namePairs?.ContainsKey(localKey) ?? false;
         }
 
 		/// <summary>
@@ -206,6 +206,9 @@ namespace XAPI
 		/// <param name="localName">Local name.</param>
 		public void AddNamePair(string localKey, string localName)
 		{
+			if (this.namePairs == null) {
+				this.namePairs = new();
+			}
 			this.namePairs.Add(localKey, localName);
 		}
 
@@ -216,6 +219,9 @@ namespace XAPI
 		/// <param name="localName">Local name.</param>
 		public void AddDescriptionPair(string localKey, string localDescription)
 		{
+			if (this.descriptionPairs == null) {
+				this.descriptionPairs = new();
+			}
 			this.descriptionPairs.Add(localKey, localDescription);
 		}
 	}
