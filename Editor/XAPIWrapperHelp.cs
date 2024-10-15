@@ -12,8 +12,8 @@ public class XAPIWrapperHelp : EditorWindow
     private bool showInfo = false;
     private bool showLRS = false;
     private bool showXAPI = false;
-    private bool showNew = false;
-    private bool showEdit = false;
+    //private bool showNew = false;
+    //private bool showEdit = false;
     private Vector2 scrollView = Vector2.zero;
 
     [MenuItem ("Window/XAPI/Wrapper Help")]
