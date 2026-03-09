@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Networking;
-using Newtonsoft.Json;
-using System.Runtime.CompilerServices;
 
 namespace XAPI {
   public class XAPIMessenger : MonoBehaviour {
@@ -198,11 +198,18 @@ namespace XAPI {
 
       yield return request.SendWebRequest();
 
-      // Return whatever we found.
-      StatementResult result = JsonConvert.DeserializeObject<StatementResult>(request.downloadHandler.text);
+			StatementResult result;
+			// Our server does not follow the xAPI spec! :(
+			if (request.downloadHandler.text[0] == '[') {
+				result = new();
+				result.Statements = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Statement>>(request.downloadHandler.text);
+			} else {
+				// Return whatever we found.
+				result = Newtonsoft.Json.JsonConvert.DeserializeObject<StatementResult>(request.downloadHandler.text);
+			}
 
-      // Correct Actor IFI Types
-      for (int k = 0; k < result.StatementCount; k++) {
+			// Correct Actor IFI Types
+			for (int k = 0; k < result.StatementCount; k++) {
         result.Statements[k].Actor.ifi = result.Statements[k].Actor.GuessIFI();
       }
 
