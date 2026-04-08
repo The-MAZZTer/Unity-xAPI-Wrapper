@@ -8,15 +8,13 @@ using Newtonsoft.Json;
 namespace XAPI
 {
 	[System.Serializable]
-	public class Statement : Object
-	{
+	public class Statement : Object {
 		/// <summary>
 		/// Gets the main actor for this Statement.
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("actor", NullValueHandling = NullValueHandling.Ignore)]
-		public Actor Actor
-		{
+		public Actor Actor {
 			get { return this.mainActor; }
 			set { this.mainActor = value; }
 		}
@@ -26,8 +24,7 @@ namespace XAPI
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("verb", NullValueHandling = NullValueHandling.Ignore)]
-		public Verb Verb
-		{
+		public Verb Verb {
 			get { return this.mainVerb; }
 			set { this.mainVerb = value; }
 		}
@@ -39,8 +36,7 @@ namespace XAPI
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("object", NullValueHandling = NullValueHandling.Ignore)]
-		public Object Object
-		{
+		public Object Object {
 			get { return this.mainObject; }
 			set { this.mainObject = value; }
 		}
@@ -50,10 +46,9 @@ namespace XAPI
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]
-		public Result Result
-		{
+		public Result Result {
 			get { return this.mainResult; }
-			set { this.mainResult = value; } 
+			set { this.mainResult = value; }
 		}
 
 		/// <summary>
@@ -61,10 +56,9 @@ namespace XAPI
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("context", NullValueHandling = NullValueHandling.Ignore)]
-		public Context Context
-		{
+		public Context Context {
 			get { return this.mainContext; }
-			set { this.mainContext = value; } 
+			set { this.mainContext = value; }
 		}
 
 		/// <summary>
@@ -74,8 +68,7 @@ namespace XAPI
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-		public string UUID
-		{
+		public string UUID {
 			get { return (this.isSubStatement) ? null : this.uuid; }
 			set { this.uuid = value; }
 		}
@@ -88,8 +81,7 @@ namespace XAPI
 		/// </summary>
 		/// <value>The main actor.</value>
 		[JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore)]
-		public string Timestamp
-		{
+		public string Timestamp {
 			get { return this.timestamp; }
 			set { this.timestamp = value; }
 		}
@@ -99,10 +91,8 @@ namespace XAPI
 		/// </summary>
 		/// <value>The timestamp date.</value>
 		[JsonIgnore]
-		public DateTime TimestampDate
-		{
-			get
-			{ 
+		public DateTime TimestampDate {
+			get {
 				return DateTime.Parse(this.Timestamp, null, System.Globalization.DateTimeStyles.RoundtripKind);
 			}
 		}
@@ -112,11 +102,9 @@ namespace XAPI
 		/// </summary>
 		/// <value><c>true</c> if this instance is sub statement; otherwise, <c>false</c>.</value>
 		[JsonIgnore]
-		public bool IsSubStatement
-		{
+		public bool IsSubStatement {
 			get { return this.isSubStatement; }
-			set
-			{
+			set {
 				// If we intended for this to be a sub statement, then we need to change the object type here to reflect that
 				//
 				this.isSubStatement = value;
@@ -160,13 +148,12 @@ namespace XAPI
 		/// 
 		/// Accepts an Actor, Verb, and Object.
 		/// </summary>
-		public Statement(Actor sActor, Verb sVerb, Object sObject)
-		{
+		public Statement(Actor sActor, Verb sVerb, Object sObject) {
 			// We need these 3 at a minimum to make a statement.
 			this.mainActor = sActor;
 			this.mainVerb = sVerb;
 			this.mainObject = sObject;
-            
+
 			// Basic stuff
 			this.timestamp = XAPIUtil.CurrentTimeISO;
 			this.Version = XAPIUtil.XAPI_VERSION;
@@ -179,30 +166,29 @@ namespace XAPI
 		/// <summary>
 		/// Refreshs the timestamp.
 		/// </summary>
-		public void RefreshTimestamp()
-		{
+		public void RefreshTimestamp() {
 			this.timestamp = XAPIUtil.CurrentTimeISO;
 		}
 
-        [JsonIgnore]
-        public string SimpleTriple
-        {
-            get
-            {
-                if (this.Object is Activity)
-                {
-                    var activity = this.Object as Activity;
-                    var displayName = activity.Id;
-                    if (activity.Definition != null && activity.Definition.HasNameKey("en-US"))
-                        displayName = activity.Definition.NamePairs["en-US"];
+		[JsonIgnore]
+		public string SimpleTriple {
+			get {
+				if (this.Object is Activity) {
+					var activity = this.Object as Activity;
+					var displayName = activity.Id;
+					if (activity.Definition != null) {
+						if (activity.Definition.HasNameKey("en-US")) {
+							displayName = activity.Definition.NamePairs["en-US"];
+						}
+						if (activity.Definition.HasNameKey("en")) {
+							displayName = activity.Definition.NamePairs["en"];
+						}
 
-                    return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, displayName);
-                }
-                else
-                {
-                    return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, "unknown object");
-                }
-            }
-        }
+						return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, displayName);
+					} else {
+						return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, "unknown object");
+					}
+				}
+			}
+		}
 	}
-}

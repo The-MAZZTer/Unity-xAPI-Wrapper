@@ -4,23 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace XAPI
-{
+namespace XAPI {
 	/// <summary>
 	/// Activity-style X Object.
 	/// </summary>
-    [System.Serializable]
-	public class Activity : Object
-	{
+	[System.Serializable]
+	public class Activity : Object {
 		/// <summary>
 		/// Gets the ID declared during construction.
 		/// </summary>
 		/// <value>The identifier.</value>
 		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-		public string Id
-		{
-			get
-			{
+		public string Id {
+			get {
 				return this.id;
 			}
 		}
@@ -32,14 +28,11 @@ namespace XAPI
 		/// </summary>
 		/// <value>The identifier.</value>
 		[JsonProperty("definition", NullValueHandling = NullValueHandling.Ignore)]
-		public ActivityMetaData Definition
-		{
-			get
-			{
+		public ActivityMetaData Definition {
+			get {
 				return this.definition;
 			}
-			set
-			{
+			set {
 				this.definition = value;
 			}
 		}
@@ -52,17 +45,15 @@ namespace XAPI
 		/// Creates a new Activity instance from the given ID.
 		/// </summary>
 		/// <param name="id">Identifier IRI.</param>
-		public Activity(string id = "http://activity.com/id", string name = null)
-		{
+		public Activity(string id = "http://activity.com/id", string name = null) {
 			this.objectType = "Activity";
 			this.id = id;
 
-            // Assign the name if necessary
-            if (name != null)
-            {
-                this.definition = new ActivityMetaData();
-                this.definition.AddNamePair("en-US", name);
-            }
+			// Assign the name if necessary
+			if (name != null) {
+				this.definition = new ActivityMetaData();
+				this.definition.AddNamePair("en", name);
+			}
 		}
 	}
 
@@ -74,8 +65,7 @@ namespace XAPI
 	/// !NOTE: "Extensions" have not yet not been implemented.
 	/// </summary>
 	[System.Serializable]
-	public class ActivityMetaData
-	{
+	public class ActivityMetaData {
 		/// <summary>
 		/// Mapping of name pairs.  Locale : Local Description.
 		/// 
@@ -83,14 +73,11 @@ namespace XAPI
 		/// </summary>
 		/// <value>The identifier.</value>
 		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-		public Dictionary<string, string> NamePairs
-		{
-			get
-			{
+		public Dictionary<string, string> NamePairs {
+			get {
 				return this.namePairs;
 			}
-			set
-			{
+			set {
 				this.namePairs = value;
 			}
 		}
@@ -102,14 +89,11 @@ namespace XAPI
 		/// </summary>
 		/// <value>The identifier.</value>
 		[JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-		public Dictionary<string, string> DescriptionPairs
-		{
-			get
-			{
+		public Dictionary<string, string> DescriptionPairs {
+			get {
 				return this.descriptionPairs;
 			}
-			set
-			{
+			set {
 				this.descriptionPairs = value;
 			}
 		}
@@ -119,14 +103,11 @@ namespace XAPI
 		/// </summary>
 		/// <value>The type of the activity.</value>
 		[JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-		public string ActivityType
-		{
-			get
-			{
+		public string ActivityType {
+			get {
 				return this.activityType;
 			}
-			set
-			{
+			set {
 				this.activityType = value;
 			}
 		}
@@ -136,14 +117,11 @@ namespace XAPI
 		/// </summary>
 		/// <value>The more info.</value>
 		[JsonProperty("moreInfo", NullValueHandling = NullValueHandling.Ignore)]
-		public string MoreInfo
-		{
-			get
-			{
+		public string MoreInfo {
+			get {
 				return this.moreInfo;
 			}
-			set
-			{
+			set {
 				this.moreInfo = value;
 			}
 		}
@@ -153,8 +131,7 @@ namespace XAPI
 		/// </summary>
 		/// <value>Key/value pairs of extension ids and string values.</value>
 		[JsonProperty("extensions", NullValueHandling = NullValueHandling.Ignore)]
-		public Dictionary <string, string> Extensions
-		{
+		public Dictionary<string, string> Extensions {
 			get { return this.extensions; }
 			set { this.extensions = value; }
 		}
@@ -171,8 +148,7 @@ namespace XAPI
 		/// </summary>
 		/// <param name="activityType">(IRI) Activity type.</param>
 		/// <param name="moreInfo">(IRL) Resolves to a document with human-readable information about the Activity, which could include a way to launch the activity.</param>
-		public ActivityMetaData(string activityType = null, string moreInfo = null)
-		{
+		public ActivityMetaData(string activityType = null, string moreInfo = null) {
 			this.activityType = activityType;
 			this.moreInfo = moreInfo;
 
@@ -181,31 +157,28 @@ namespace XAPI
 			//this.descriptionPairs = new Dictionary<string, string>();
 		}
 
-        /// <summary>
-        /// Check if the metadata instance has a given name key.
-        /// </summary>
-        /// <param name="localKey"></param>
-        public bool HasNameKey(string localKey)
-        {
-            return this.namePairs?.ContainsKey(localKey) ?? false;
-        }
+		/// <summary>
+		/// Check if the metadata instance has a given name key.
+		/// </summary>
+		/// <param name="localKey"></param>
+		public bool HasNameKey(string localKey) {
+			return this.namePairs?.ContainsKey(localKey) ?? false;
+		}
 
-        /// <summary>
-        /// Check if the metadata instance has a description key.
-        /// </summary>
-        /// <param name="localKey"></param>
-        public bool HasDescriptionKey(string localKey)
-        {
-            return this.namePairs?.ContainsKey(localKey) ?? false;
-        }
+		/// <summary>
+		/// Check if the metadata instance has a description key.
+		/// </summary>
+		/// <param name="localKey"></param>
+		public bool HasDescriptionKey(string localKey) {
+			return this.namePairs?.ContainsKey(localKey) ?? false;
+		}
 
 		/// <summary>
 		/// Adds the name pair.
 		/// </summary>
 		/// <param name="localKey">Local key.</param>
 		/// <param name="localName">Local name.</param>
-		public void AddNamePair(string localKey, string localName)
-		{
+		public void AddNamePair(string localKey, string localName) {
 			if (this.namePairs == null) {
 				this.namePairs = new();
 			}
@@ -217,8 +190,7 @@ namespace XAPI
 		/// </summary>
 		/// <param name="localKey">Local key.</param>
 		/// <param name="localName">Local name.</param>
-		public void AddDescriptionPair(string localKey, string localDescription)
-		{
+		public void AddDescriptionPair(string localKey, string localDescription) {
 			if (this.descriptionPairs == null) {
 				this.descriptionPairs = new();
 			}
@@ -226,4 +198,3 @@ namespace XAPI
 		}
 	}
 }
-
