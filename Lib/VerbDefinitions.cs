@@ -34,7 +34,7 @@ namespace XAPI
 			{
 				if (Verbs.answered == null)
 				{
-					Verbs.answered = new Verb("answered", "https://adlnet.gov/expapi/verbs/answered");
+					Verbs.answered = new Verb("answered", "http://adlnet.gov/expapi/verbs/answered");
 
 					Verbs.answered.AddDisplayPair("de-DE", "beantwortete");
 					Verbs.answered.AddDisplayPair("en-US", "answered");
@@ -53,7 +53,7 @@ namespace XAPI
 			{
 				if (Verbs.asked == null)
 				{
-					Verbs.asked = new Verb("asked", "https://adlnet.gov/expapi/verbs/asked");
+					Verbs.asked = new Verb("asked", "http://adlnet.gov/expapi/verbs/asked");
 
 					Verbs.asked.AddDisplayPair("de-DE", "fragte");
 					Verbs.asked.AddDisplayPair("en-US", "asked");
@@ -72,7 +72,7 @@ namespace XAPI
 			{
 				if (Verbs.attempted == null)
 				{
-					Verbs.attempted = new Verb("attempted", "https://adlnet.gov/expapi/verbs/attempted");
+					Verbs.attempted = new Verb("attempted", "http://adlnet.gov/expapi/verbs/attempted");
 
 					Verbs.attempted.AddDisplayPair("de-DE", "versuchte");
 					Verbs.attempted.AddDisplayPair("en-US", "attempted");
@@ -91,7 +91,7 @@ namespace XAPI
 			{
 				if (Verbs.attended == null)
 				{
-					Verbs.attended = new Verb("attended", "https://adlnet.gov/expapi/verbs/attended");
+					Verbs.attended = new Verb("attended", "http://adlnet.gov/expapi/verbs/attended");
 
 					Verbs.attended.AddDisplayPair("de-DE", "nahm teil an");
 					Verbs.attended.AddDisplayPair("en-US", "attended");
@@ -110,7 +110,7 @@ namespace XAPI
 			{
 				if (Verbs.commented == null)
 				{
-					Verbs.commented = new Verb("commented", "https://adlnet.gov/expapi/verbs/commented");
+					Verbs.commented = new Verb("commented", "http://adlnet.gov/expapi/verbs/commented");
 
 					Verbs.commented.AddDisplayPair("de-DE", "kommentierte");
 					Verbs.commented.AddDisplayPair("en-US", "commented");
@@ -129,7 +129,7 @@ namespace XAPI
 			{
 				if (Verbs.completed == null)
 				{
-					Verbs.completed = new Verb("completed", "https://adlnet.gov/expapi/verbs/completed");
+					Verbs.completed = new Verb("completed", "http://adlnet.gov/expapi/verbs/completed");
 
 					Verbs.completed.AddDisplayPair("de-DE", "beendete");
 					Verbs.completed.AddDisplayPair("en-US", "completed");
@@ -148,7 +148,7 @@ namespace XAPI
 			{
 				if (Verbs.exited == null)
 				{
-					Verbs.exited = new Verb("exited", "https://adlnet.gov/expapi/verbs/exited");
+					Verbs.exited = new Verb("exited", "http://adlnet.gov/expapi/verbs/exited");
 
 					Verbs.exited.AddDisplayPair("de-DE", "verließ");
 					Verbs.exited.AddDisplayPair("en-US", "exited");
@@ -167,7 +167,7 @@ namespace XAPI
 			{
 				if (Verbs.experienced == null)
 				{
-					Verbs.experienced = new Verb("experienced", "https://adlnet.gov/expapi/verbs/experienced");
+					Verbs.experienced = new Verb("experienced", "http://adlnet.gov/expapi/verbs/experienced");
 
 					Verbs.experienced.AddDisplayPair("de-DE", "erlebte");
 					Verbs.experienced.AddDisplayPair("en-US", "experienced");
@@ -186,7 +186,7 @@ namespace XAPI
 			{
 				if (Verbs.failed == null)
 				{
-					Verbs.failed = new Verb("failed", "https://adlnet.gov/expapi/verbs/failed");
+					Verbs.failed = new Verb("failed", "http://adlnet.gov/expapi/verbs/failed");
 
 					Verbs.failed.AddDisplayPair("de-DE", "verfehlte");
 					Verbs.failed.AddDisplayPair("en-US", "failed");
@@ -205,7 +205,7 @@ namespace XAPI
 			{
 				if (Verbs.imported == null)
 				{
-					Verbs.imported = new Verb("imported", "https://adlnet.gov/expapi/verbs/imported");
+					Verbs.imported = new Verb("imported", "http://adlnet.gov/expapi/verbs/imported");
 
 					Verbs.imported.AddDisplayPair("de-DE", "importierte");
 					Verbs.imported.AddDisplayPair("en-US", "imported");
@@ -224,7 +224,7 @@ namespace XAPI
 			{
 				if (Verbs.initialized == null)
 				{
-					Verbs.initialized = new Verb("initialized", "https://adlnet.gov/expapi/verbs/initialized");
+					Verbs.initialized = new Verb("initialized", "http://adlnet.gov/expapi/verbs/initialized");
 
 					Verbs.initialized.AddDisplayPair("de-DE", "initialisierte");
 					Verbs.initialized.AddDisplayPair("en-US", "initialized");
@@ -243,7 +243,7 @@ namespace XAPI
 			{
 				if (Verbs.interacted == null)
 				{
-					Verbs.interacted = new Verb("interacted", "https://adlnet.gov/expapi/verbs/interacted");
+					Verbs.interacted = new Verb("interacted", "http://adlnet.gov/expapi/verbs/interacted");
 
 					Verbs.interacted.AddDisplayPair("de-DE", "interagierte");
 					Verbs.interacted.AddDisplayPair("en-US", "interacted");
@@ -262,7 +262,7 @@ namespace XAPI
 			{
 				if (Verbs.launched == null)
 				{
-					Verbs.launched = new Verb("launched", "https://adlnet.gov/expapi/verbs/launched");
+					Verbs.launched = new Verb("launched", "http://adlnet.gov/expapi/verbs/launched");
 
 					Verbs.launched.AddDisplayPair("de-DE", "startete");
 					Verbs.launched.AddDisplayPair("en-US", "launched");
@@ -281,7 +281,7 @@ namespace XAPI
 			{
 				if (Verbs.mastered == null)
 				{
-					Verbs.mastered = new Verb("mastered", "https://adlnet.gov/expapi/verbs/mastered");
+					Verbs.mastered = new Verb("mastered", "http://adlnet.gov/expapi/verbs/mastered");
 
 					Verbs.mastered.AddDisplayPair("de-DE", "meisterte");
 					Verbs.mastered.AddDisplayPair("en-US", "mastered");
@@ -300,7 +300,7 @@ namespace XAPI
 			{
 				if (Verbs.passed == null)
 				{
-					Verbs.passed = new Verb("passed", "https://adlnet.gov/expapi/verbs/passed");
+					Verbs.passed = new Verb("passed", "http://adlnet.gov/expapi/verbs/passed");
 
 					Verbs.passed.AddDisplayPair("de-DE", "bestand");
 					Verbs.passed.AddDisplayPair("en-US", "passed");
@@ -319,7 +319,7 @@ namespace XAPI
 			{
 				if (Verbs.preferred == null)
 				{
-					Verbs.preferred = new Verb("preferred", "https://adlnet.gov/expapi/verbs/preferred");
+					Verbs.preferred = new Verb("preferred", "http://adlnet.gov/expapi/verbs/preferred");
 
 					Verbs.preferred.AddDisplayPair("de-DE", "bevorzugte");
 					Verbs.preferred.AddDisplayPair("en-US", "preferred");
@@ -338,7 +338,7 @@ namespace XAPI
 			{
 				if (Verbs.progressed == null)
 				{
-					Verbs.progressed = new Verb("progressed", "https://adlnet.gov/expapi/verbs/progressed");
+					Verbs.progressed = new Verb("progressed", "http://adlnet.gov/expapi/verbs/progressed");
 
 					Verbs.progressed.AddDisplayPair("de-DE", "machte Fortschritt mit");
 					Verbs.progressed.AddDisplayPair("en-US", "progressed");
@@ -357,7 +357,7 @@ namespace XAPI
 			{
 				if (Verbs.registered == null)
 				{
-					Verbs.registered = new Verb("registered", "https://adlnet.gov/expapi/verbs/registered");
+					Verbs.registered = new Verb("registered", "http://adlnet.gov/expapi/verbs/registered");
 
 					Verbs.registered.AddDisplayPair("de-DE", "registrierte");
 					Verbs.registered.AddDisplayPair("en-US", "registered");
@@ -376,7 +376,7 @@ namespace XAPI
 			{
 				if (Verbs.responded == null)
 				{
-					Verbs.responded = new Verb("responded", "https://adlnet.gov/expapi/verbs/responded");
+					Verbs.responded = new Verb("responded", "http://adlnet.gov/expapi/verbs/responded");
 
 					Verbs.responded.AddDisplayPair("de-DE", "reagierte");
 					Verbs.responded.AddDisplayPair("en-US", "responded");
@@ -395,7 +395,7 @@ namespace XAPI
 			{
 				if (Verbs.resumed == null)
 				{
-					Verbs.resumed = new Verb("resumed", "https://adlnet.gov/expapi/verbs/resumed");
+					Verbs.resumed = new Verb("resumed", "http://adlnet.gov/expapi/verbs/resumed");
 
 					Verbs.resumed.AddDisplayPair("de-DE", "setzte fort");
 					Verbs.resumed.AddDisplayPair("en-US", "resumed");
@@ -430,7 +430,7 @@ namespace XAPI
 			{
 				if (Verbs.scored == null)
 				{
-					Verbs.scored = new Verb("scored", "https://adlnet.gov/expapi/verbs/scored");
+					Verbs.scored = new Verb("scored", "http://adlnet.gov/expapi/verbs/scored");
 
 					Verbs.scored.AddDisplayPair("de-DE", "erreichte");
 					Verbs.scored.AddDisplayPair("en-US", "scored");
@@ -449,7 +449,7 @@ namespace XAPI
 			{
 				if (Verbs.shared == null)
 				{
-					Verbs.shared = new Verb("shared", "https://adlnet.gov/expapi/verbs/shared");
+					Verbs.shared = new Verb("shared", "http://adlnet.gov/expapi/verbs/shared");
 
 					Verbs.shared.AddDisplayPair("de-DE", "teilte");
 					Verbs.shared.AddDisplayPair("en-US", "shared");
@@ -468,7 +468,7 @@ namespace XAPI
 			{
 				if (Verbs.suspended == null)
 				{
-					Verbs.suspended = new Verb("suspended", "https://adlnet.gov/expapi/verbs/suspended");
+					Verbs.suspended = new Verb("suspended", "http://adlnet.gov/expapi/verbs/suspended");
 
 					Verbs.suspended.AddDisplayPair("de-DE", "pausierte");
 					Verbs.suspended.AddDisplayPair("en-US", "suspended");
@@ -487,7 +487,7 @@ namespace XAPI
 			{
 				if (Verbs.terminated == null)
 				{
-					Verbs.terminated = new Verb("terminated", "https://adlnet.gov/expapi/verbs/terminated");
+					Verbs.terminated = new Verb("terminated", "http://adlnet.gov/expapi/verbs/terminated");
 
 					Verbs.terminated.AddDisplayPair("de-DE", "beendete");
 					Verbs.terminated.AddDisplayPair("en-US", "terminated");
@@ -564,7 +564,7 @@ namespace XAPI
 			{
 				if (VerbsSpecial.voided == null)
 				{
-					VerbsSpecial.voided = new Verb("voided", "https://adlnet.gov/expapi/verbs/voided");
+					VerbsSpecial.voided = new Verb("voided", "http://adlnet.gov/expapi/verbs/voided");
 
 					VerbsSpecial.voided.AddDisplayPair("de-DE", "entwertete");
 					VerbsSpecial.voided.AddDisplayPair("en-US", "voided");
