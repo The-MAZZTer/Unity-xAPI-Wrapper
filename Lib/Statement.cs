@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace XAPI
-{
+namespace XAPI {
 	[System.Serializable]
 	public class Statement : Object {
 		/// <summary>
@@ -183,12 +182,13 @@ namespace XAPI
 						if (activity.Definition.HasNameKey("en")) {
 							displayName = activity.Definition.NamePairs["en"];
 						}
-
-						return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, displayName);
-					} else {
-						return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, "unknown object");
 					}
+
+					return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, displayName);
+				} else {
+					return string.Format("{0}, {1}, {2}", this.Actor.Name, this.Verb.Name, "unknown object");
 				}
 			}
 		}
 	}
+}
