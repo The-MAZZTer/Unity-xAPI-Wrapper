@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using JsonKnownTypes;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -198,20 +199,31 @@ namespace XAPI {
 
       yield return request.SendWebRequest();
 
+      if (request.responseCode >= 400 || !string.IsNullOrEmpty(request.downloadHandler.error)) {
+        throw new UnauthorizedAccessException(request.downloadHandler.error);
+      }
+
 			StatementResult result;
-			// Our server does not follow the xAPI spec! :(
 			if (request.downloadHandler.text[0] == '[') {
+				// For servers that don't follow XAPI spec
 				result = new();
-				result.Statements = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Statement>>(request.downloadHandler.text);
-			} else {
+        result.Statements = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Statement>>(request.downloadHandler.text, new JsonSerializerSettings() {
+          Converters = { new JsonKnownTypesConverter<Object>() }
+        });
+			} else if (request.downloadHandler.text[0] == '{') {
 				// Return whatever we found.
-				result = Newtonsoft.Json.JsonConvert.DeserializeObject<StatementResult>(request.downloadHandler.text);
+				result = Newtonsoft.Json.JsonConvert.DeserializeObject<StatementResult>(request.downloadHandler.text, new JsonSerializerSettings() {
+					Converters = { new JsonKnownTypesConverter<Object>() }
+				});
+			} else {
+				// Veracity not XAPI spec compliant
+				throw new UnauthorizedAccessException(request.downloadHandler.text);
 			}
 
 			// Correct Actor IFI Types
 			for (int k = 0; k < result.StatementCount; k++) {
-        result.Statements[k].Actor.ifi = result.Statements[k].Actor.GuessIFI();
-      }
+          result.Statements[k].Actor.ifi = result.Statements[k].Actor.GuessIFI();
+        }
 
       // Make the callback
       callback(result, request);

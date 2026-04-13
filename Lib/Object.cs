@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-
+using JsonKnownTypes;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -12,7 +13,15 @@ namespace XAPI
 	/// Statement objects can be Actors, other Statements, or Activities.  Those classes inherit from
 	/// this to simplify the process of creating statements.
 	/// </summary>
-	[System.Serializable]
+	[System.Serializable,
+		JsonDiscriminator(Name = "objectType"),
+		JsonKnownTypeFallback(typeof(Object)),
+		JsonKnownType(typeof(Activity), "Activity"),
+		JsonKnownType(typeof(Actor), "Agent"),
+		JsonKnownType(typeof(AgentResource), "Person"),
+		//JsonKnownType(typeof(Actor), "Group"),
+		JsonKnownType(typeof(Statement), "Statement"),
+		JsonKnownType(typeof(StatementRef), "StatementRef")]
 	public class Object
 	{
 		/// <summary>

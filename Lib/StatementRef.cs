@@ -40,7 +40,7 @@ namespace XAPI
 		/// <param name="XKey">X key.</param>
 		public StatementRef(string XKey)
 		{
-			this.objectType = "XRef";
+			this.objectType = "StatementRef";
 			this.id = XKey;
 		}
 	}
